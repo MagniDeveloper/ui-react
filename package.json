@@ -18,7 +18,7 @@
     "url": "https://github.com/MagniDeveloper/ui-react.git"
   },
   "homepage": "https://magnideveloper.com/productos/ui-libary",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "type": "module",
   "license": "MIT",
   "files": [
