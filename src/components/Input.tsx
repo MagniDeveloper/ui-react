@@ -1,60 +1,86 @@
-import React from "react";
+import { type InputHTMLAttributes, type FC, forwardRef } from "react";
+import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "../utils/cn";
 
-import { InputProps } from "../types/Input";
+export interface InputProps
+  extends InputHTMLAttributes<HTMLInputElement>,
+    VariantProps<typeof input> {
+  label?: string;
+  endLabel?: React.ReactNode;
 
-export const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ ...props }, ref) => {
+  startContent?: React.ReactNode;
+  endContent?: React.ReactNode;
+
+  isInvalid?: boolean;
+  errorMessage?: string;
+
+  variant?: "DEFAULT" | "primary";
+}
+
+const input = cva(
+  "w-full py-3 px-5 rounded-xl hover:opacity-90 active:opacity-80 focus:outline-none focus:ring-2 focus:ring-primary placeholder-neutral-500 select-none overflow-hidden border",
+  {
+    variants: {
+      variant: {
+        DEFAULT: "bg-light dark:bg-neutral-900 border-neutral-300 dark:border-neutral-800", // prettier-ignore
+        primary: "bg-primary text-white dark:bg-primary dark:text-white", // prettier-ignore
+      },
+    },
+    defaultVariants: {
+      variant: "DEFAULT",
+    },
+  }
+);
+
+export const Input: FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(
+  (
+    {
+      className,
+      variant,
+      endContent,
+      startContent,
+      isInvalid,
+      errorMessage,
+      label,
+      endLabel,
+      ...props
+    },
+    ref
+  ) => {
     return (
       <div className="w-full flex flex-col gap-y-2 relative">
-        {props.label && (
+        {label && (
           <div className="w-full flex justify-between text-sm">
-            <label>{props.label}</label>
+            <label>{label}</label>
 
-            {props.endLabel && <div>{props.endLabel}</div>}
+            {endLabel && <div>{endLabel}</div>}
           </div>
         )}
 
         <div className="w-full flex gap-x-2">
-          {props.startContent && (
-            <div className="flex items-center gap-x-2">
-              {props.startContent}
-            </div>
+          {startContent && (
+            <div className="flex items-center gap-x-2">{startContent}</div>
           )}
 
           <input
             ref={ref}
-            id={props.id}
-            className={cn(
-              "w-full bg-light dark:bg-neutral-900 py-3 px-5 rounded-xl hover:opacity-90 active:opacity-80 focus:outline-none focus:ring-2 focus:ring-primary placeholder-neutral-500 select-none overflow-hidden border border-neutral-300 dark:border-neutral-800",
-              props.className
-            )}
-            type={props.type}
-            name={props.name}
-            placeholder={props.placeholder}
-            defaultValue={props.defaultValue}
-            value={props.value}
-            onChange={props.onChange}
-            autoComplete={props.autoComplete}
+            className={cn(input({ className, variant }))}
+            {...props}
           />
 
-          {props.endContent && (
-            <div className="flex items-center gap-x-2">{props.endContent}</div>
+          {endContent && (
+            <div className="flex items-center gap-x-2">{endContent}</div>
           )}
         </div>
 
-        {props.isInvalid && (
+        {isInvalid && (
           <div className="text-neutral-500 text-sm">
             <span className="text-primary">* </span>
-            {props.errorMessage}
+            {errorMessage}
           </div>
         )}
       </div>
     );
   }
 );
-
-Input.displayName = "Input";
-
-export default Input;

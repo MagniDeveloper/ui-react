@@ -1,35 +1,71 @@
-import React from "react";
-
-import LoaderCircle from "../assets/svgs/LoaderCircle";
+import { type ButtonHTMLAttributes, type FC, forwardRef } from "react";
+import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "../utils/cn";
+import LoaderCircle from "../assets/svgs/LoaderCircle";
 
-import { ButtonProps } from "../types/Button";
+export interface ButtonProps
+  extends ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof button> {
+  startContent?: React.ReactNode;
+  endContent?: React.ReactNode;
 
-export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ ...props }, ref) => {
+  isDisabled?: boolean;
+  isLoading?: boolean;
+  isIcon?: boolean;
+
+  variant?: "DEFAULT" | "primary";
+}
+
+const button = cva(
+  "w-full flex justify-center items-center gap-x-2 py-3 px-5 rounded-xl hover:opacity-90 active:opacity-80 focus:outline-none focus:ring-2 focus:ring-primary disabled:opacity-50 select-none border",
+  {
+    variants: {
+      variant: {
+        DEFAULT: "bg-light text-neutral-900 dark:bg-neutral-900 border-neutral-300 dark:border-neutral-800", // prettier-ignore
+        primary: "bg-primary text-white dark:bg-primary dark:text-white border-primary dark:border-primary", // prettier-ignore
+      },
+    },
+    defaultVariants: {
+      variant: "DEFAULT",
+    },
+  }
+);
+
+export const Button: FC<ButtonProps> = forwardRef<
+  HTMLButtonElement,
+  ButtonProps
+>(
+  (
+    {
+      className,
+      variant,
+      isIcon,
+      isLoading,
+      isDisabled,
+      startContent,
+      endContent,
+      children,
+      ...props
+    },
+    ref
+  ) => {
     return (
       <button
         ref={ref}
-        onClick={props.onClick}
         className={cn(
-          "w-full flex justify-center items-center gap-x-2 bg-light dark:bg-neutral-900 py-3 px-5 rounded-xl hover:opacity-90 active:opacity-80 focus:outline-none focus:ring-2 focus:ring-primary disabled:opacity-50 select-none border border-neutral-300 dark:border-neutral-800",
-          props.className,
-          props.isIcon && "px-3 w-auto max-w-max max-h-max"
+          button({ className, variant }),
+          isIcon && "px-3 w-auto max-w-max max-h-max"
         )}
-        type={props.type}
-        disabled={props.isDisabled || props.isLoading}
+        disabled={isDisabled || isLoading}
+        {...props}
       >
-        {props.isLoading && <LoaderCircle className="animate-spin" />}
+        {isLoading && <LoaderCircle className="animate-spin" />}
 
-        {props.startContent && <div>{props.startContent}</div>}
-        {props.children}
-        {props.endContent && <div>{props.endContent}</div>}
+        {startContent && <div>{startContent}</div>}
+        {children}
+        {endContent && <div>{endContent}</div>}
       </button>
     );
   }
 );
-
-Button.displayName = "Button";
-
-export default Button;

@@ -1,10 +1,10 @@
 import "./assets/styles/index.css";
 
 export { Button } from "./components/Button";
-export type { ButtonProps } from "./types/Button";
+export type { ButtonProps } from "./components/Button";
 
 export { Input } from "./components/Input";
-export type { InputProps } from "./types/Input";
+export type { InputProps } from "./components/Input";
 
 export { Card } from "./components/Card";
-export type { CardProps } from "./types/Card";
+export type { CardProps } from "./components/Card";

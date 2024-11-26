@@ -1,6 +1,6 @@
 {
   "name": "@magnidev-org/ui-react",
-  "version": "0.0.8",
+  "version": "0.0.15",
   "type": "module",
   "files": [
     "dist"
@@ -52,6 +52,7 @@
     "commit": "cz"
   },
   "dependencies": {
+    "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "tailwind-merge": "^2.5.5"
   },
