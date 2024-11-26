@@ -68,14 +68,14 @@ const input = cva(
       variant: {
         default: [
           "bg-light",
-          "dark:bg-default-900",
+          "dark:bg-neutral-900",
           "border",
-          "border-default-300",
-          "dark:border-default-800",
-          "placeholder-default-400",
-          "placeholder:text-default-400",
-          "dark:placeholder-default-500",
-          "dark:placeholder:text-default-500",
+          "border-neutral-300",
+          "dark:border-neutral-800",
+          "placeholder-neutral-400",
+          "placeholder:text-neutral-400",
+          "dark:placeholder-neutral-500",
+          "dark:placeholder:text-neutral-500",
           "focus:ring-primary",
         ],
         primary: [
@@ -136,7 +136,7 @@ export const Input: FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(
         </div>
 
         {isInvalid && (
-          <div className="text-default-500 text-sm">
+          <div className="text-neutral-500 text-sm">
             <span className="text-primary">* </span>
             {errorMessage}
           </div>

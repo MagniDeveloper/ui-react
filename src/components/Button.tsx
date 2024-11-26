@@ -61,11 +61,11 @@ const button = cva(
       variant: {
         default: [
           "bg-light",
-          "text-default-900",
-          "dark:bg-default-900",
+          "text-neutral-900",
+          "dark:bg-neutral-900",
           "border",
-          "border-default-300",
-          "dark:border-default-800",
+          "border-neutral-300",
+          "dark:border-neutral-800",
           "focus:ring-primary",
         ],
         primary: [

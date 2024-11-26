@@ -68,7 +68,7 @@ const card = cva(
           "dark:bg-dark",
           "border",
           "border-light",
-          "dark:border-default-900",
+          "dark:border-neutral-900",
         ],
         gradient: [
           "bg-gradient-to-bl",
@@ -76,9 +76,9 @@ const card = cva(
           "from-light",
           "to-white",
           "dark:from-dark",
-          "dark:to-default-900",
+          "dark:to-neutral-900",
           "border-light",
-          "dark:border-default-900",
+          "dark:border-neutral-900",
         ],
       },
     },
@@ -115,7 +115,7 @@ export const Card: FC<CardProps> = forwardRef<HTMLDivElement, CardProps>(
         {headerContent && (
           <div
             className={cn(
-              "border-b border-light dark:border-default-900 p-4",
+              "border-b border-light dark:border-neutral-900 p-4",
               classNames?.header
             )}
           >
@@ -132,7 +132,7 @@ export const Card: FC<CardProps> = forwardRef<HTMLDivElement, CardProps>(
         {footerContent && (
           <div
             className={cn(
-              "border-t border-light dark:border-default-900 p-4",
+              "border-t border-light dark:border-neutral-900 p-4",
               classNames?.footer
             )}
           >
