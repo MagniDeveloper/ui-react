@@ -7,10 +7,24 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        white: "#ffffff",
+        black: "#000000",
         primary: "#0369a1",
         dark: "#0a0a0a",
         light: "#ededed",
         danger: "#A30015",
+        warning: "#d97706",
+        default: {
+          100: "#fafafa",
+          200: "#f5f5f5",
+          300: "#e5e5e5",
+          400: "#d4d4d4",
+          500: "#737373",
+          600: "#525252",
+          700: "#44403c",
+          800: "#292524",
+          900: "#1c1917",
+        },
       },
     },
   },
