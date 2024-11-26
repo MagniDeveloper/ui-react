@@ -14,8 +14,8 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, "src/main.ts"),
-      name: "@magnidev-org/ui-react",
-      fileName: "@magnidev-org/ui-react",
+      name: "ui-react",
+      fileName: "ui-react",
     },
     rollupOptions: {
       external: ["react", "react-dom", "react/jsx-runtime"],

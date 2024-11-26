@@ -2,17 +2,7 @@ import React from "react";
 
 import { cn } from "../utils/cn";
 
-export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
-  label?: string;
-  endLabel?: React.ReactNode;
-
-  startContent?: React.ReactNode;
-  endContent?: React.ReactNode;
-
-  isInvalid?: boolean;
-  errorMessage?: string;
-}
+import { InputProps } from "../types/Input";
 
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ ...props }, ref) => {
@@ -47,7 +37,6 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             value={props.value}
             onChange={props.onChange}
             autoComplete={props.autoComplete}
-            {...props}
           />
 
           {props.endContent && (

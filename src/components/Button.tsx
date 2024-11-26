@@ -4,15 +4,7 @@ import LoaderCircle from "../assets/svgs/LoaderCircle";
 
 import { cn } from "../utils/cn";
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  startContent?: React.ReactNode;
-  endContent?: React.ReactNode;
-
-  isDisabled?: boolean;
-  isLoading?: boolean;
-  isIcon?: boolean;
-}
+import { ButtonProps } from "../types/Button";
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ ...props }, ref) => {
@@ -27,7 +19,6 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         )}
         type={props.type}
         disabled={props.isDisabled || props.isLoading}
-        {...props}
       >
         {props.isLoading && <LoaderCircle className="animate-spin" />}
 

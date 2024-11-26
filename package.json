@@ -1,19 +1,20 @@
 {
   "name": "@magnidev-org/ui-react",
-  "version": "0.0.4",
+  "version": "0.0.8",
   "type": "module",
   "files": [
     "dist"
   ],
   "types": "./dist/ui-react.d.ts",
-  "main": "./dist/@magnidev-org/ui-react.umd.cjs",
-  "module": "./dist/@magnidev-org/ui-react.js",
+  "main": "./dist/ui-react.umd.cjs",
+  "module": "./dist/ui-react.js",
   "exports": {
     ".": {
-      "import": "./dist/@magnidev-org/ui-react.js",
-      "require": "./dist/@magnidev-org/ui-react.umd.cjs"
+      "import": "./dist/ui-react.js",
+      "require": "./dist/ui-react.umd.cjs"
     },
-    "./dist/style.css": "./dist/style.css"
+    "./dist/style.css": "./dist/style.css",
+    "./dist/ui-react.d.ts": "./dist/ui-react.d.ts"
   },
   "release": {
     "branches": [
