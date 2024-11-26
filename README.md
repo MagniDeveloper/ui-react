@@ -1,4 +1,33 @@
-# ⭐ React Library for @magni-ui
+# ⭐ React Library for @magnidev-org
 
-> [!NOTE]
-> Este projeto foi criado com [Create React App]
+This project is a React component library created for the used by the Magni Developer team. It is a collection of components that are used across multiple projects.
+
+## Installation
+
+To install the library, run the following command:
+
+```bash
+npm install @magnidev-org/ui-react
+```
+
+## Usage
+
+To use the library, import the components you need from the library:
+
+```jsx
+import { Button, Input } from "@magnidev-org/ui-react";
+
+function App() {
+  return (
+    <div>
+      <Button>Click me</Button>
+
+      <Input placeholder="Enter your name" />
+    </div>
+  );
+}
+```
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

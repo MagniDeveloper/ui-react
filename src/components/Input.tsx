@@ -47,6 +47,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             value={props.value}
             onChange={props.onChange}
             autoComplete={props.autoComplete}
+            {...props}
           />
 
           {props.endContent && (

@@ -27,6 +27,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         )}
         type={props.type}
         disabled={props.isDisabled || props.isLoading}
+        {...props}
       >
         {props.isLoading && <LoaderCircle className="animate-spin" />}
 

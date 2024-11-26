@@ -5,6 +5,7 @@
   "files": [
     "dist"
   ],
+  "types": "./dist/@magnidev-org/ui-react.d.ts",
   "main": "./dist/@magnidev-org/ui-react.umd.cjs",
   "module": "./dist/@magnidev-org/ui-react.js",
   "exports": {
