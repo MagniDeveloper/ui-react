@@ -1,4 +1,4 @@
-# ⭐ React Library for @magnidev-org
+# ⭐ React UI Library for @magnidev-org
 
 This project is a React component library created for the used by the Magni Developer team. It is a collection of components that are used across multiple projects.
 

@@ -1,7 +1,19 @@
 {
   "name": "@magnidev-org/ui-react",
-  "version": "0.0.15",
+  "description": "React UI Library for @magnidev-org",
+  "author": {
+    "email": "contacto@magnideveloper.com",
+    "name": "fermeridamagni | Magni Developer",
+    "url": "https://magnideveloper.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MagniDeveloper/ui-react.git"
+  },
+  "homepage": "https://magnideveloper.com/products/ui-libary",
+  "version": "0.0.16",
   "type": "module",
+  "license": "MIT",
   "files": [
     "dist"
   ],

@@ -6,29 +6,88 @@ import { cn } from "../utils/cn";
 export interface InputProps
   extends InputHTMLAttributes<HTMLInputElement>,
     VariantProps<typeof input> {
-  label?: string;
-  endLabel?: React.ReactNode;
+  /*
+    The label to be displayed above the input.
 
+    @default null
+    
+  */
+  label?: string;
+
+  /*
+    The label to be displayed at the end of the input.
+
+    @default null
+  */
+  endLabelContent?: React.ReactNode;
+
+  /*
+    The content to be displayed at the start of the input.
+
+    @default null
+  */
   startContent?: React.ReactNode;
+
+  /*
+    The content to be displayed at the end of the input.
+
+    @default null
+  */
   endContent?: React.ReactNode;
 
-  isInvalid?: boolean;
-  errorMessage?: string;
+  /*
+    Whether the input is invalid.
 
-  variant?: "DEFAULT" | "primary";
+    @default false
+  */
+  isInvalid?: boolean;
+
+  /*
+    The error message to be displayed if the input is invalid.
+
+    @default null
+  */
+  errorMessage?: string;
 }
 
 const input = cva(
-  "w-full py-3 px-5 rounded-xl hover:opacity-90 active:opacity-80 focus:outline-none focus:ring-2 focus:ring-primary placeholder-neutral-500 select-none overflow-hidden border",
+  [
+    "w-full",
+    "py-3",
+    "px-5",
+    "rounded-xl",
+    "hover:opacity-90",
+    "active:opacity-80",
+    "focus:outline-none",
+    "focus:ring-2",
+    "select-none",
+    "overflow-hidden",
+  ],
   {
     variants: {
       variant: {
-        DEFAULT: "bg-light dark:bg-neutral-900 border-neutral-300 dark:border-neutral-800", // prettier-ignore
-        primary: "bg-primary text-white dark:bg-primary dark:text-white", // prettier-ignore
+        default: [
+          "bg-light",
+          "dark:bg-neutral-900",
+          "border",
+          "border-neutral-300",
+          "dark:border-neutral-800",
+          "placeholder-neutral-500",
+          "focus:ring-primary",
+        ],
+        primary: [
+          "bg-primary",
+          "text-white",
+          "dark:bg-primary",
+          "dark:text-white",
+          "border-none",
+          "placeholder-neutral-300",
+          "focus:ring-primary",
+        ],
       },
     },
     defaultVariants: {
-      variant: "DEFAULT",
+      variant: "default",
     },
   }
 );
@@ -43,7 +102,7 @@ export const Input: FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(
       isInvalid,
       errorMessage,
       label,
-      endLabel,
+      endLabelContent,
       ...props
     },
     ref
@@ -54,14 +113,12 @@ export const Input: FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(
           <div className="w-full flex justify-between text-sm">
             <label>{label}</label>
 
-            {endLabel && <div>{endLabel}</div>}
+            {endLabelContent}
           </div>
         )}
 
         <div className="w-full flex gap-x-2">
-          {startContent && (
-            <div className="flex items-center gap-x-2">{startContent}</div>
-          )}
+          {startContent}
 
           <input
             ref={ref}
@@ -69,9 +126,7 @@ export const Input: FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(
             {...props}
           />
 
-          {endContent && (
-            <div className="flex items-center gap-x-2">{endContent}</div>
-          )}
+          {endContent}
         </div>
 
         {isInvalid && (
@@ -84,3 +139,5 @@ export const Input: FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(
     );
   }
 );
+
+Input.displayName = "Input";

@@ -7,27 +7,86 @@ import LoaderCircle from "../assets/svgs/LoaderCircle";
 export interface ButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof button> {
+  /*
+    The content to be displayed at the start of the button.
+
+    @default null
+    
+  */
   startContent?: React.ReactNode;
+
+  /*
+    The content to be displayed at the end of the button.
+
+    @default null
+  */
   endContent?: React.ReactNode;
 
-  isDisabled?: boolean;
-  isLoading?: boolean;
-  isIcon?: boolean;
+  /*
+    Whether the button should be disabled.
 
-  variant?: "DEFAULT" | "primary";
+    @default false
+  */
+  isDisabled?: boolean;
+
+  /*
+    Whether the button should display a loading spinner.
+
+    @default false
+  */
+  isLoading?: boolean;
 }
 
 const button = cva(
-  "w-full flex justify-center items-center gap-x-2 py-3 px-5 rounded-xl hover:opacity-90 active:opacity-80 focus:outline-none focus:ring-2 focus:ring-primary disabled:opacity-50 select-none border",
+  [
+    "w-full",
+    "inline-block",
+    "flex",
+    "justify-center",
+    "items-center",
+    "gap-x-2",
+    "py-3",
+    "px-5",
+    "text-base",
+    "rounded-xl",
+    "hover:opacity-90",
+    "active:opacity-80",
+    "disabled:opacity-50",
+    "focus:outline-none",
+    "focus:ring-2",
+    "select-none",
+  ],
   {
     variants: {
       variant: {
-        DEFAULT: "bg-light text-neutral-900 dark:bg-neutral-900 border-neutral-300 dark:border-neutral-800", // prettier-ignore
-        primary: "bg-primary text-white dark:bg-primary dark:text-white border-primary dark:border-primary", // prettier-ignore
+        default: [
+          "bg-light",
+          "text-neutral-900",
+          "dark:bg-neutral-900",
+          "border",
+          "border-neutral-300",
+          "dark:border-neutral-800",
+          "focus:ring-primary",
+        ],
+        primary: [
+          "bg-primary",
+          "text-white,",
+          "dark:bg-primary",
+          "dark:text-white",
+          "border-none",
+          "focus:ring-primary",
+        ],
+      },
+      size: {
+        sm: ["text-sm", "py-2", "px-4"],
+        md: ["text-base", "py-3", "px-5"],
+        lg: ["text-lg", "py-4", "px-6"],
+        icon: ["px-3", "w-auto", "max-w-max", "max-h-max"],
       },
     },
     defaultVariants: {
-      variant: "DEFAULT",
+      variant: "default",
+      size: "md",
     },
   }
 );
@@ -40,7 +99,7 @@ export const Button: FC<ButtonProps> = forwardRef<
     {
       className,
       variant,
-      isIcon,
+      size,
       isLoading,
       isDisabled,
       startContent,
@@ -53,19 +112,18 @@ export const Button: FC<ButtonProps> = forwardRef<
     return (
       <button
         ref={ref}
-        className={cn(
-          button({ className, variant }),
-          isIcon && "px-3 w-auto max-w-max max-h-max"
-        )}
+        className={cn(button({ className, variant, size }))}
         disabled={isDisabled || isLoading}
         {...props}
       >
         {isLoading && <LoaderCircle className="animate-spin" />}
 
-        {startContent && <div>{startContent}</div>}
+        {startContent}
         {children}
-        {endContent && <div>{endContent}</div>}
+        {endContent}
       </button>
     );
   }
 );
+
+Button.displayName = "Button";
