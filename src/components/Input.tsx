@@ -1,4 +1,4 @@
-import { type InputHTMLAttributes, type FC, forwardRef } from "react";
+import React, { type InputHTMLAttributes, type FC, forwardRef } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "../utils/cn";
@@ -73,6 +73,9 @@ const input = cva(
           "border-neutral-300",
           "dark:border-neutral-800",
           "placeholder-neutral-500",
+          "placeholder:text-neutral-500",
+          "dark:placeholder-neutral-400",
+          "dark:placeholder:text-neutral-400",
           "focus:ring-primary",
         ],
         primary: [
@@ -82,6 +85,9 @@ const input = cva(
           "dark:text-white",
           "border-none",
           "placeholder-neutral-300",
+          "placeholder:text-neutral-300",
+          "dark:placeholder-neutral-700",
+          "dark:placeholder:text-neutral-700",
           "focus:ring-primary",
         ],
       },

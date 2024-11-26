@@ -5,7 +5,16 @@ import { cn } from "../utils/cn";
 
 export interface CardProps
   extends HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof card> {}
+    VariantProps<typeof card> {
+  headerContent?: React.ReactNode;
+  footerContent?: React.ReactNode;
+
+  classNames?: {
+    header?: string;
+    body?: string;
+    footer?: string;
+  };
+}
 
 const card = cva(
   [
@@ -14,8 +23,9 @@ const card = cva(
     "backdrop-blur-sm",
     "shadow-md",
     "rounded-2xl",
-    "p-6",
     "relative",
+    "flex",
+    "flex-col",
   ],
   {
     variants: {
@@ -29,11 +39,11 @@ const card = cva(
         ],
         gradient: [
           "bg-gradient-to-bl",
+          "border",
           "from-light",
           "to-white",
           "dark:from-dark",
           "dark:to-neutral-900",
-          "border",
           "border-light",
           "dark:border-neutral-900",
         ],
@@ -46,7 +56,18 @@ const card = cva(
 );
 
 export const Card: FC<CardProps> = forwardRef<HTMLDivElement, CardProps>(
-  ({ className, variant, ...props }, ref) => {
+  (
+    {
+      children,
+      className,
+      variant,
+      headerContent,
+      footerContent,
+      classNames,
+      ...props
+    },
+    ref
+  ) => {
     return (
       <div
         ref={ref}
@@ -58,7 +79,33 @@ export const Card: FC<CardProps> = forwardRef<HTMLDivElement, CardProps>(
         )}
         {...props}
       >
-        {props.children}
+        {headerContent && (
+          <div
+            className={cn(
+              "border-b border-light dark:border-neutral-900 p-4",
+              classNames?.header
+            )}
+          >
+            {headerContent}
+          </div>
+        )}
+
+        <div
+          className={cn("w-full p-4 flex flex-col gap-y-4", classNames?.body)}
+        >
+          {children}
+        </div>
+
+        {footerContent && (
+          <div
+            className={cn(
+              "border-t border-light dark:border-neutral-900 p-4",
+              classNames?.footer
+            )}
+          >
+            {footerContent}
+          </div>
+        )}
       </div>
     );
   }
