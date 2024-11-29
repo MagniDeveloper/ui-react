@@ -1,0 +1,91 @@
+{
+  "name": "@magnidev-org/ui-react",
+  "description": "React UI Library for @magnidev-org",
+  "keywords": [
+    "magnidev-org",
+    "components",
+    "ui components",
+    "modern components",
+    "react components"
+  ],
+  "author": {
+    "email": "contacto@magnideveloper.com",
+    "name": "fermeridamagni | Magni Developer",
+    "url": "https://magnideveloper.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MagniDeveloper/ui-react.git"
+  },
+  "homepage": "https://magnideveloper.com/productos/ui-libary",
+  "license": "MIT",
+  "version": "0.0.24",
+  "type": "module",
+  "types": "./dist/ui-react.d.ts",
+  "main": "./dist/ui-react.umd.cjs",
+  "module": "./dist/ui-react.js",
+  "exports": {
+    ".": {
+      "import": "./dist/ui-react.js",
+      "require": "./dist/ui-react.umd.cjs"
+    },
+    "./dist/style.css": "./dist/style.css",
+    "./dist/ui-react.d.ts": "./dist/ui-react.d.ts"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "peerDependencies": {
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwind-merge": "^2.5.5"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^3.2.2",
+    "@eslint/js": "^9.15.0",
+    "@storybook/addon-essentials": "^8.4.5",
+    "@storybook/addon-interactions": "^8.4.5",
+    "@storybook/addon-onboarding": "^8.4.5",
+    "@storybook/blocks": "^8.4.5",
+    "@storybook/manager-api": "^8.4.5",
+    "@storybook/react": "^8.4.5",
+    "@storybook/react-vite": "^8.4.5",
+    "@storybook/test": "^8.4.5",
+    "@storybook/theming": "^8.4.5",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.15.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.14",
+    "eslint-plugin-storybook": "^0.11.1",
+    "globals": "^15.12.0",
+    "postcss": "^8.4.49",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "storybook": "^8.4.5",
+    "storybook-dark-mode": "^4.0.2",
+    "tailwindcss": "^3.4.15",
+    "typescript": "~5.7.2",
+    "typescript-eslint": "^8.16.0",
+    "vite": "^5.4.11",
+    "vite-plugin-dts": "^4.3.0",
+    "vite-tsconfig-paths": "^5.1.3"
+  },
+  "eslintConfig": {
+    "extends": [
+      "plugin:storybook/recommended"
+    ]
+  }
+}
