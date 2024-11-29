@@ -40,15 +40,11 @@ export interface ButtonProps
 const button = cva(
   [
     "w-full",
-    "max-w-max",
     "inline-block",
     "flex",
     "justify-center",
     "items-center",
     "gap-x-2",
-    "py-3",
-    "px-5",
-    "text-base",
     "rounded-xl",
     "hover:opacity-90",
     "active:opacity-80",
@@ -63,6 +59,7 @@ const button = cva(
         default: [
           "bg-light",
           "text-neutral-900",
+          "dark:text-neutral-100",
           "dark:bg-neutral-900",
           "border",
           "border-neutral-300",
@@ -76,11 +73,30 @@ const button = cva(
           "dark:text-white",
           "focus:ring-primary/80",
         ],
+        dark: [
+          "bg-neutral-800",
+          "dark:bg-neutral-800",
+          "border-neutral-700",
+          "dark:border-neutral-700",
+          "text-white",
+          "dark:text-white",
+        ],
+        light: [
+          "bg-neutral-100",
+          "dark:bg-neutral-100",
+          "border-neutral-800",
+          "dark:border-neutral-800",
+          "text-neutral-900",
+          "dark:text-neutral-900",
+        ],
       },
       size: {
         sm: ["text-sm", "py-2", "px-4"],
         md: ["text-base", "py-3", "px-5"],
         lg: ["text-lg", "py-4", "px-6"],
+      },
+      sizeType: {
+        default: ["py-3", "px-5", "max-w-max"],
         icon: ["px-3", "w-auto", "max-w-max", "max-h-max"],
         full: ["w-full", "max-w-full"],
       },
@@ -88,6 +104,7 @@ const button = cva(
     defaultVariants: {
       variant: "default",
       size: "md",
+      sizeType: "default",
     },
   }
 );
@@ -101,6 +118,7 @@ export const Button: FC<ButtonProps> = forwardRef<
       className,
       variant,
       size,
+      sizeType,
       isLoading,
       isDisabled,
       startContent,
@@ -113,11 +131,11 @@ export const Button: FC<ButtonProps> = forwardRef<
     return (
       <button
         ref={ref}
-        className={cn(button({ className, variant, size }))}
+        className={cn(button({ className, variant, size, sizeType }))}
         disabled={isDisabled || isLoading}
         {...props}
       >
-        {isLoading && <LoaderCircle className="animate-spin" />}
+        {isLoading && <LoaderCircle className="animate-spin size-5" />}
 
         {startContent}
         {children}

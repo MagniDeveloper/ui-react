@@ -44,6 +44,7 @@ const card = cva(
     "flex-col",
     "border",
     "text-base",
+    "border",
   ],
   {
     variants: {
@@ -62,6 +63,19 @@ const card = cva(
           "dark:to-neutral-900",
           "border-light",
           "dark:border-neutral-900",
+        ],
+        dark: [
+          "bg-dark",
+          "text-white",
+          "border-neutral-900",
+          "dark:border-neutral-900",
+        ],
+        light: [
+          "bg-light",
+          "text-neutral-900",
+          "dark:text-neutral-100",
+          "border-light",
+          "dark:border-light",
         ],
       },
     },
@@ -99,6 +113,11 @@ export const Card: FC<CardProps> = forwardRef<HTMLDivElement, CardProps>(
           <div
             className={cn(
               "border-b border-neutral-300 dark:border-neutral-900 p-4",
+              variant === "light" &&
+                "border-neutral-300 dark:border-neutral-300",
+              variant === "dark" &&
+                "border-neutral-900 dark:border-neutral-900",
+
               classNames?.header
             )}
           >
@@ -116,6 +135,11 @@ export const Card: FC<CardProps> = forwardRef<HTMLDivElement, CardProps>(
           <div
             className={cn(
               "border-t border-neutral-300 dark:border-neutral-900 p-4",
+              variant === "light" &&
+                "border-neutral-300 dark:border-neutral-300",
+              variant === "dark" &&
+                "border-neutral-900 dark:border-neutral-900",
+
               classNames?.footer
             )}
           >

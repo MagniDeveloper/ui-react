@@ -7,6 +7,15 @@ export interface InputProps
   extends InputHTMLAttributes<HTMLInputElement>,
     VariantProps<typeof input> {
   /*
+    The class name to be applied to the input.
+
+    @default null
+  */
+  classNames?: {
+    errorMessage?: string;
+  };
+
+  /*
     The label to be displayed above the input.
 
     @default null
@@ -103,6 +112,7 @@ export const Input: FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(
   (
     {
       className,
+      classNames,
       variant,
       endContent,
       startContent,
@@ -137,7 +147,9 @@ export const Input: FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(
         </div>
 
         {isInvalid && (
-          <div className="text-neutral-500 text-sm">
+          <div
+            className={cn("text-neutral-500 text-sm", classNames?.errorMessage)}
+          >
             <span className="text-primary">* </span>
             {errorMessage}
           </div>

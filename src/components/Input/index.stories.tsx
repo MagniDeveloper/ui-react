@@ -4,6 +4,13 @@ import { Input } from ".";
 
 const meta: Meta<typeof Input> = {
   title: "Components/Input",
+  decorators: [
+    (Story) => (
+      <div className="bg-neutral-700 p-4 rounded-2xl text-white">
+        <Story />
+      </div>
+    ),
+  ],
   component: Input,
   tags: ["autodocs"],
 };

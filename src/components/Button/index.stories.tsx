@@ -5,6 +5,13 @@ import { Button } from ".";
 
 const meta: Meta<typeof Button> = {
   title: "Components/Button",
+  decorators: [
+    (Story) => (
+      <div className="bg-neutral-700 p-4 rounded-2xl">
+        <Story />
+      </div>
+    ),
+  ],
   component: Button,
   tags: ["autodocs"],
 };
@@ -27,11 +34,36 @@ export const Primary: Story = {
   },
 };
 
+export const Dark: Story = {
+  name: "Button + Dark Variant",
+  args: {
+    children: "Dark",
+    variant: "dark",
+  },
+};
+
+export const Light: Story = {
+  name: "Button + Light Variant",
+  args: {
+    children: "Light",
+    variant: "light",
+  },
+};
+
+export const Loading: Story = {
+  name: "Button + Loading State",
+  args: {
+    variant: "dark",
+    children: "Loading",
+    isLoading: true,
+  },
+};
+
 export const FullWidth: Story = {
   name: "Button + Full Width Size",
   args: {
     children: "Full Width",
-    size: "full",
+    sizeType: "full",
   },
 };
 
@@ -39,7 +71,31 @@ export const Icon: Story = {
   name: "Button + Icon Size",
   args: {
     children: <Home className="size-6" />,
-    size: "icon",
+    sizeType: "icon",
+  },
+};
+
+export const SizeSM: Story = {
+  name: "Button + Small Size",
+  args: {
+    children: "Small",
+    size: "sm",
+  },
+};
+
+export const SizeMD: Story = {
+  name: "Button + Medium Size",
+  args: {
+    children: "Medium",
+    size: "md",
+  },
+};
+
+export const SizeLG: Story = {
+  name: "Button + Large Size",
+  args: {
+    children: "Large",
+    size: "lg",
   },
 };
 

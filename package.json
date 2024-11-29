@@ -19,7 +19,7 @@
   },
   "homepage": "https://magnideveloper.com/productos/ui-libary",
   "license": "MIT",
-  "version": "0.0.24",
+  "version": "0.0.25",
   "type": "module",
   "types": "./dist/ui-react.d.ts",
   "main": "./dist/ui-react.umd.cjs",
