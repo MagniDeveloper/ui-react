@@ -7,7 +7,7 @@ This project is a React component library created for the used by the Magni Deve
 To install the library, run the following command:
 
 ```bash
-npm install @magnidev-org/ui-react
+npm install @magnidev-org/ui-react@latest
 ```
 
 ## Usage
@@ -15,20 +15,12 @@ npm install @magnidev-org/ui-react
 To use the library, import the components you need from the library:
 
 ```jsx
-import { UIProvider, Button } from "@magnidev-org/ui-react";
-
-/*
-  The UIProvider provide the theme to the components 
-
-  If you already installed the "next-themes" package, you can use the ThemeProvider from that package.
-*/
+import { Button } from "@magnidev-org/ui-react";
 
 function App() {
   return (
     <div>
-      <UIProvider>
-        <Button>Click me</Button>
-      </UIProvider>
+      <Button>Click me</Button>
     </div>
   );
 }
